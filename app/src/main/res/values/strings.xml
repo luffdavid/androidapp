@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProductAndroidApp</string>
+
+
+    <string name="city_name">City Name</string>
+    <string name="send_request">Send Request</string>
+    <string name="loading">Loading…</string>
+</resources>
