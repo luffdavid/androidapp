@@ -1,6 +1,7 @@
 package com.david.productandroidapp.view
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.david.productandroidapp.R
-import com.david.productandroidapp.model.CurrentWeatherResponse
+import com.david.productandroidapp.model.CurrentProductResponse
 import com.david.productandroidapp.viewmodel.MainViewModel
 import java.lang.StringBuilder
 
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imgCondition: ImageView
     private lateinit var tvResult: TextView
     private lateinit var btnSend: Button
-
+    private lateinit var btnNavigate: Button // Hinzugefügt
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         imgCondition = findViewById(R.id.img_condition)
         tvResult = findViewById(R.id.tv_result)
         btnSend = findViewById(R.id.btn_send_request)
-
+        btnNavigate = findViewById(R.id.btn_navigate) // Hinzugefügt
         // Add on click button to the send button
         btnSend.setOnClickListener {
             // Text field validation
@@ -42,10 +43,16 @@ class MainActivity : AppCompatActivity() {
                 etCityName.error = "Field can't be null"
             } else {
                 // Get weather data
-                mainViewModel.getWeatherData(etCityName.text.toString())
+                mainViewModel.getProductData(etCityName.text.toString())
             }
         }
+        // OnClickListener für den btnNavigate
+        btnNavigate.setOnClickListener {
+            val intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
     }
+
+}
 
     private fun subscribe() {
         mainViewModel.isLoading.observe(this) { isLoading ->
@@ -61,32 +68,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        mainViewModel.weatherData.observe(this) { weatherData ->
+        mainViewModel.productData.observe(this) { weatherData ->
             // Display weather data to the UI
             setResultText(weatherData)
         }
     }
 
-    private fun setResultText(weatherData: CurrentWeatherResponse) {
+    private fun setResultText(weatherData: CurrentProductResponse) {
         val resultText = StringBuilder("Result:\n")
 
-        weatherData.location.let { location ->
-            resultText.append("Name: ${location?.name}\n")
-            resultText.append("Region: ${location?.region}\n")
-            resultText.append("Country: ${location?.country}\n")
-            resultText.append("Timezone ID: ${location?.tzId}\n")
-            resultText.append("Local Time: ${location?.localtime}\n")
-        }
+        weatherData.let { product ->
+            resultText.append("Name: ${product?.name}\n")
 
-        weatherData.current.let { current ->
-            current?.condition.let { condition ->
-                resultText.append("Condition: ${condition?.text}\n")
-                setResultImage(condition?.icon)
-            }
-            resultText.append("Celcius: ${current?.tempC}\n")
-            resultText.append("Fahrenheit: ${current?.tempF}\n")
         }
-
         tvResult.text = resultText
     }
 

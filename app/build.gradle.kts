@@ -55,6 +55,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
     implementation ("com.github.bumptech.glide:glide:4.14.2")
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.recyclerview)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

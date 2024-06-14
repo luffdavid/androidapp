@@ -2,13 +2,22 @@ package com.david.productandroidapp.model
 
 import com.google.gson.annotations.SerializedName
 
-data class CurrentWeatherResponse(
+data class CurrentProductResponse (
 
-    @field:SerializedName("current")
-    val current: Current? = null,
+    @field:SerializedName("id")
+    val id: Int? = null,
 
-    @field:SerializedName("location")
-    val location: Location? = null
+    @field:SerializedName("name")
+    val name: String? = null,
+
+    @field:SerializedName("productGroupId")
+    val productGroupId: Int? = null,
+
+    @field:SerializedName("price")
+    val price: Double? = null,
+
+    @field:SerializedName("stock")
+    val stock: Int? = null
 )
 
 data class Condition(

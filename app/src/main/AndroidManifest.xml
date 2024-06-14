@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".view.MainActivity"
             android:exported="true"
@@ -19,10 +21,14 @@
             android:theme="@style/Theme.AppCompat.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- DetailActivity hinzugefügt -->
+        <activity android:name=".view.DetailActivity"
+            android:exported="false"
+            android:label="Detail"/>
+
+    </application>
 </manifest>

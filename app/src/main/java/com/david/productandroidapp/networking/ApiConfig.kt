@@ -21,7 +21,7 @@ class ApiConfig {
 
             // Retrofit
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://api.weatherapi.com/v1/")
+                .baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
