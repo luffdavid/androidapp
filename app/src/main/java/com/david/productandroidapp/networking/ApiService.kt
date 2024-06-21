@@ -9,8 +9,8 @@ interface ApiService {
 
     @GET("salesProduct")
     fun getProducts(): Call<List<CurrentProductResponse>>
-    @GET("salesProduct/3")
+    @GET("salesProduct/search")
     fun getCurrentProducts(
-
-    ): Call<CurrentProductResponse>
+@Query("product") product: String
+    ): Call<List<CurrentProductResponse>>
 }

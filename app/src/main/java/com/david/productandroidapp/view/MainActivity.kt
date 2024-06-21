@@ -68,21 +68,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        mainViewModel.productData.observe(this) { weatherData ->
-            // Display weather data to the UI
-            setResultText(weatherData)
+        mainViewModel.productData.observe(this) { productData ->
+            // Display product data to the UI
+            setResultText(productData)
         }
     }
 
-    private fun setResultText(weatherData: CurrentProductResponse) {
+
+    private fun setResultText(productData: List<CurrentProductResponse>) {
         val resultText = StringBuilder("Result:\n")
-
-        weatherData.let { product ->
-            resultText.append("Name: ${product?.name}\n")
-
+        for (product in productData) {
+            resultText.append("Name: ${product.name}\n")
+            resultText.append("Price: ${product.price}\n\n") // Beispiel für ein weiteres Feld
         }
-        tvResult.text = resultText
+        tvResult.text = resultText.toString()
     }
+
 
     private fun setResultImage(imageUrl: String?) {
         // Display image when image url is available
