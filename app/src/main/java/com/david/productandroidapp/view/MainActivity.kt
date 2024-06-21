@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         subscribe()
 
         etCityName = findViewById(R.id.et_city_name)
-        imgCondition = findViewById(R.id.img_condition)
         tvResult = findViewById(R.id.tv_result)
         btnSend = findViewById(R.id.btn_send_request)
         btnNavigate = findViewById(R.id.btn_navigate) // Hinzugefügt
@@ -79,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         val resultText = StringBuilder("Result:\n")
         for (product in productData) {
             resultText.append("Name: ${product.name}\n")
-            resultText.append("Price: ${product.price}\n\n") // Beispiel für ein weiteres Feld
+            resultText.append("Price: ${product.price}\n\n")
         }
         tvResult.text = resultText.toString()
     }

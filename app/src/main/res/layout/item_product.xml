@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- item_product.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#E0E0E0"
+    android:layout_margin="8dp"
+    android:clipToPadding="false"
+    android:outlineAmbientShadowColor="@color/black">
 
     <TextView
         android:id="@+id/tv_product_name"
@@ -19,4 +23,5 @@
         android:layout_height="wrap_content"
         android:text="Product Price"
         android:textSize="16sp" />
+
 </LinearLayout>
