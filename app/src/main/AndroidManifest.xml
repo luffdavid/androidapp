@@ -29,6 +29,9 @@
         <activity android:name=".view.DetailActivity"
             android:exported="false"
             android:label="Detail"/>
+        <activity android:name=".view.AddActivity"
+            android:exported="false"
+            android:label="Add"></activity>
 
     </application>
 </manifest>

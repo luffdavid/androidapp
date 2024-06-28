@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imgCondition: ImageView
     private lateinit var tvResult: TextView
     private lateinit var btnSend: Button
-    private lateinit var btnNavigate: Button // Hinzugefügt
+    private lateinit var btnNavigate: Button
+    private lateinit var btnAdd: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,14 +36,15 @@ class MainActivity : AppCompatActivity() {
         etCityName = findViewById(R.id.et_city_name)
         tvResult = findViewById(R.id.tv_result)
         btnSend = findViewById(R.id.btn_send_request)
-        btnNavigate = findViewById(R.id.btn_navigate) // Hinzugefügt
+        btnNavigate = findViewById(R.id.btn_navigate)
+        btnAdd = findViewById(R.id.btn_add_product)
         // Add on click button to the send button
         btnSend.setOnClickListener {
             // Text field validation
             if (etCityName.text.isNullOrEmpty() or etCityName.text.isNullOrBlank()) {
                 etCityName.error = "Field can't be null"
             } else {
-                // Get weather data
+                // Get product data
                 mainViewModel.getProductData(etCityName.text.toString())
             }
         }
@@ -50,6 +53,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailActivity::class.java)
             startActivity(intent)
     }
+        // OnClickListener für den btnAdd
+        btnAdd.setOnClickListener {
+            val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
+        }
 
 }
 

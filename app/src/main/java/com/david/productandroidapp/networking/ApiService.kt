@@ -13,4 +13,8 @@ interface ApiService {
     fun getCurrentProducts(
 @Query("product") product: String
     ): Call<List<CurrentProductResponse>>
+    @POST("salesProduct")
+    fun createProduct(
+        @Body product: CurrentProductResponse
+    ): Call<CurrentProductResponse>
 }
